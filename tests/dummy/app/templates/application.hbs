@@ -1,3 +1,54 @@
-<h2 id="title">Welcome to Ember</h2>
+<h2 id="title">ember-themed-syntax</h2>
 
-{{outlet}}
+
+<h3>Installation</h3>
+{{#themed-syntax lang="bash"}}
+  ember install ember-themed-syntax
+{{/themed-syntax}}
+
+<h3>Usage</h3>
+<p>
+  The following params are accepted
+</p>
+<p>
+
+  <code>lang</code>: <small>required, default is <strong>html</strong></small><br>
+  <code>theme</code>: <small>optional, default is <strong>light</strong></small><br>
+</p>
+{{#themed-syntax lang="htmlbars" theme="dark"}}
+&#123;&#123;#themed-syntax lang="htmlbars" theme="dark"&#125;&#125;
+  &#123;&#123;!Some code&#125;&#125;
+&#123;&#123;/themed-syntax&#125;&#125;
+{{/themed-syntax}}
+
+<p>The default theme is set to light</p>
+
+{{#themed-syntax lang="htmlbars"}}
+&#123;&#123;#themed-syntax lang="htmlbars"&#125;&#125;
+  &#123;&#123;!Some code&#125;&#125;
+&#123;&#123;/themed-syntax&#125;&#125;
+{{/themed-syntax}}
+
+<p>Example (Javascript)</p>
+
+{{#themed-syntax lang="javascript" theme="dark"}}
+let credo = 'This is my code. There are many lines like it, but these lines are mine.';
+
+sayCredo() {
+  return credo;
+}
+{{/themed-syntax}}
+
+<p>Example (Python)</p>
+
+{{#themed-syntax lang="python"}}
+# This program prints Hello, world!
+
+print('Hello, world!')
+{{/themed-syntax}}
+
+<p>Example (Swift)</p>
+
+{{#themed-syntax lang="swift"}}
+let delay:NSTimeInterval = NSTimeInterval(0.25);
+{{/themed-syntax}}

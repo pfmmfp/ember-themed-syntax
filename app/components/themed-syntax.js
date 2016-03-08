@@ -1,0 +1,1 @@
+export { default } from 'ember-themed-syntax/components/themed-syntax';
