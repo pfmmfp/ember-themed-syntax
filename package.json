@@ -1,7 +1,7 @@
 {
   "name": "ember-themed-syntax",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "An out-of-the-box solution for syntax highlighting with a couple of themes included",
   "directories": {
     "doc": "doc",
     "test": "tests"

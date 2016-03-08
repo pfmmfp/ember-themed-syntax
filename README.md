@@ -1,6 +1,6 @@
 # ember-themed-syntax
 
-This README outlines the details of collaborating on this Ember addon.
+An out-of-the-box solution for syntax highlighting with a couple of themes included
 
 ## Installation
 
