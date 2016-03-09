@@ -4,13 +4,15 @@ import computed, { alias } from 'ember-computed-decorators';
 
 const { run } = Ember;
 const { schedule } = run;
+
+//Credit: @OverZealous
 const highlight = window.codeHighlightLinenums;
 
 export default Ember.Component.extend({
   layout,
   tagName: 'pre',
   classNames: ['hljs'],
-  classNameBindings: ['_theme'],
+  classNameBindings: ['_theme', 'transparent:transparent'],
 
   /**
     Define CSS scope
@@ -30,6 +32,12 @@ export default Ember.Component.extend({
     this.set('dark', theme === 'dark');
     return defaults.hasOwnProperty(theme) ? defaults[theme] : theme;
   },
+
+  /**
+
+  */
+  transparent: false,
+
 
   /**
     Syntax language
@@ -71,6 +79,7 @@ export default Ember.Component.extend({
       //Get raw txt
       let raw = `\n${this.$().find('.code').text().trim()}\n`;
       let numbers = this.get('withLineNumbers');
+
       //Syntax instance
       let syntax = highlight(raw, {
           hljs: hljs,

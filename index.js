@@ -21,11 +21,15 @@ module.exports = {
 
     var target = (parentAddon || app);
 
+    var options = target.options.emberThemedSyntax || {};
+    //TODO: make each theme optional
+
     target.import(target.bowerDirectory + "/highlightjs/highlight.pack.min.js");
     target.import(target.bowerDirectory + "/code-highlight-linenums/code-highlight-linenums.js");
     //Just borrow some default styles
     target.import(target.bowerDirectory + "/hljs-themes/themes/dist/github-gist.min.css");
     target.import(target.bowerDirectory + "/hljs-themes/themes/dist/hybrid.min.css");
     target.import(target.bowerDirectory + "/hljs-themes/themes/dist/line-numbers.min.css");
+
   }
 };

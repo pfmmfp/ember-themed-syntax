@@ -4,23 +4,31 @@ An out-of-the-box solution for syntax highlighting with a couple of themes inclu
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+* `ember install ember-themed-syntax`
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+The following params are accepted
 
-## Running Tests
+  - `lang`: required, default is **html**
+  - `theme`: optional, default is **light**
+  - `transparent`: optional, default is **false**
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
 
-## Building
+    
+Template 
+    
+    {{#themed-syntax lang="htmlbars" theme="dark"}}
+      {{!Some code}}
+    {{/themed-syntax}}
 
-* `ember build`
+The default theme is set to light
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+	{{#themed-syntax lang="htmlbars"}}
+  	  {{!Some code}}
+	{{/themed-syntax}}
+	
+	
+	
+##Demo & Documentation
+<http://demos.evolutionaryapps.com/EmberThemedSyntax>

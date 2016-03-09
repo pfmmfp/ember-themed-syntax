@@ -1,5 +1,8 @@
-$blue: #8abeb7;
+$blue: #5BA097;
 $blue-light: #D1EFFF;
+$blue-dark: #4F8981;
+$yellow: #faf4f1;
+$dark-sample: #0E2847;
 
 * {
   box-sizing: border-box;
@@ -15,10 +18,65 @@ html, body, h1, h2, h3 {
   font-weight: 100;
 }
 
+strong {
+  font-weight: 500;
+}
+
+hr {
+  border: none;
+  background: none;
+  border-bottom: 1px solid $blue-light;
+}
+
 p {
   font-size: 0.9em;
 }
 
+a {
+  color: $blue;
+}
+
 code {
   background: $blue-light;
+}
+
+.title {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.subtitle {
+  color: $blue;
+}
+
+.fork-it {
+  position: fixed;
+  top: 0.5em;
+  right: 3em;
+  padding: 0.5em;
+  color: $blue;
+  outline: 1px solid $blue-light;
+  background: rgba(255, 255, 255, 0.8);
+
+  a {
+    color: $blue;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.transparent-sample {
+  padding: 1em;
+  background: $yellow;
+
+  &.dark {
+    background: $dark-sample;
+    color: $blue-light;
+
+    code {
+      background: none;
+    }
+  }
+
 }

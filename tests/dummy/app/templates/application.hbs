@@ -1,27 +1,35 @@
-<h2 id="title">ember-themed-syntax</h2>
+<header class="fork-it">
+  <a href="https://github.com/crodriguez1a/ember-themed-syntax" target="_blank"><span class="octicon octicon-mark-github"></span> Fork</a>
+</header>
 
+<h2 class="title" id="title">ember-themed-syntax</h2>
+<p class="subtitle">An out-of-the-box solution for syntax highlighting with a couple of themes included</p>
 
+<hr>
 <h3>Installation</h3>
 {{#themed-syntax lang="bash"}}
   ember install ember-themed-syntax
 {{/themed-syntax}}
 
+<hr>
 <h3>Usage</h3>
 <p>
   The following params are accepted
 </p>
 <p>
-
   <code>lang</code>: <small>required, default is <strong>html</strong></small><br>
   <code>theme</code>: <small>optional, default is <strong>light</strong></small><br>
+  <code>transparent</code>: <small>optional, default is <strong>false</strong></small><br>
 </p>
+
 {{#themed-syntax lang="htmlbars" theme="dark"}}
 &#123;&#123;#themed-syntax lang="htmlbars" theme="dark"&#125;&#125;
   &#123;&#123;!Some code&#125;&#125;
 &#123;&#123;/themed-syntax&#125;&#125;
 {{/themed-syntax}}
 
-<p>The default theme is set to light</p>
+
+<p>The default <strong>theme</strong> is set to <strong>light</strong></p>
 
 {{#themed-syntax lang="htmlbars"}}
 &#123;&#123;#themed-syntax lang="htmlbars"&#125;&#125;
@@ -29,10 +37,51 @@
 &#123;&#123;/themed-syntax&#125;&#125;
 {{/themed-syntax}}
 
+<p class="transparent-sample">
+  <p>With <strong>transparent</strong> set to <strong>true</strong></p>
+
+{{#themed-syntax lang="javascript" transparent="true"}}
+import computed, { alias } from 'ember-computed-decorators';
+{{/themed-syntax}}
+
+{{#themed-syntax lang="htmlbars" transparent="true"}}
+&#123;&#123;#themed-syntax lang="javscript" transparent="true"&#125;&#125;
+  import computed, { alias } from 'ember-computed-decorators';
+&#123;&#123;/themed-syntax&#125;&#125;
+{{/themed-syntax}}
+</p>
+
+<p class="transparent-sample dark">
+  <p>With <strong>transparent</strong> set to <strong>true</strong> on a dark page</p>
+
+{{#themed-syntax lang="javascript" theme="dark" transparent="true"}}
+import computed, { alias } from 'ember-computed-decorators';
+{{/themed-syntax}}
+
+{{#themed-syntax lang="htmlbars" theme="dark" transparent="true"}}
+&#123;&#123;#themed-syntax lang="javscript" theme="dark" transparent="true"&#125;&#125;
+  import computed, { alias } from 'ember-computed-decorators';
+&#123;&#123;/themed-syntax&#125;&#125;
+{{/themed-syntax}}
+</p>
+
+<hr>
+<h3>An aside about themes</h3>
+<p>
+Currently, only dark and light are embedded as part of the addon blueprint. Eventually, as additional themes are available, themes will be configurable in the addon options.
+</p>
+
+<p>
+Additional themes (both custom and from the highlightjs library) will be added as part of the <a href="https://github.com/crodriguez1a/hljs-themes" target="_blank"><strong>hljs-themes</strong></a> project. <a href="https://github.com/crodriguez1a/hljs-themes" target="_blank"><strong>Please contribute your favorite themes</strong></a>.
+</p>
+
+<hr>
+<h3>Examples</h3>
+
 <p>Example (Javascript)</p>
 
 {{#themed-syntax lang="javascript" theme="dark"}}
-let credo = 'This is my code. There are many lines like it, but these lines are mine.';
+let credo = 'This is my code. There are many lines of code like it, but these lines are mine.';
 
 sayCredo() {
   return credo;
@@ -52,3 +101,13 @@ print('Hello, world!')
 {{#themed-syntax lang="swift"}}
 let delay:NSTimeInterval = NSTimeInterval(0.25);
 {{/themed-syntax}}
+
+<p><a href="https://github.com/isagalaev/highlight.js/tree/master/src/languages" target="_blank">Comprehensive list of languages supported</a></p>
+
+<hr>
+<h3>Resources</h3>
+<ul>
+  <li><a href="https://highlightjs.org/" target="_blank">highlight.js</a></li>
+  <li><a href="http://github.com/OverZealous/code-highlight-linenums" target="_blank">code-highlight-linenums</a></li>
+  <li><a href="https://github.com/crodriguez1a/hljs-themes" target="_blank">hljs-themes</a></li>
+</ul>
