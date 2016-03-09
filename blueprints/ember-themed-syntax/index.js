@@ -1,6 +1,6 @@
 /*jshint node:true*/
 module.exports = {
-  description: 'Install bower dependencies'
+  description: 'Install bower dependencies',
 
 	normalizeEntityName: function() {
 		// this prevents an error when the entityName is
