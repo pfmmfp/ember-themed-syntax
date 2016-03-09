@@ -12,7 +12,7 @@ module.exports = {
     return this.addBowerPackagesToProject([
       { name: 'highlightjs', target: '^9.2.0' },
       { name: 'code-highlight-linenums', target: '^0.2.0' },
-      { name: 'hljs-themes': target: '*' }
+      { name: 'hljs-themes', target: '*' }
     ]);
 	}
 };
