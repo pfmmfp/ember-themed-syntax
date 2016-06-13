@@ -10,7 +10,7 @@ module.exports = {
 
 	afterInstall: function() {
     return this.addBowerPackagesToProject([
-      { name: 'highlightjs', target: '^9.2.0' },
+      { name: 'highlightjs', target: '^9.4.0' },
       { name: 'code-highlight-linenums', target: '^0.2.0' },
       { name: 'hljs-themes', target: '*' }
     ]);

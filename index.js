@@ -4,6 +4,8 @@
 module.exports = {
   name: 'ember-themed-syntax',
    init: function(app) {
+    this._super.init && this._super.init.apply(this, arguments);
+
     this.options = this.options || {};
     this.options.babel = this.options.babel || {};
     this.options.babel.optional = this.options.babel.optional || [];
@@ -26,7 +28,7 @@ module.exports = {
 
     target.import(target.bowerDirectory + "/highlightjs/highlight.pack.min.js");
     target.import(target.bowerDirectory + "/code-highlight-linenums/code-highlight-linenums.js");
-    //Just borrow some default styles
+    // Just borrow some default styles
     target.import(target.bowerDirectory + "/hljs-themes/themes/dist/github-gist.min.css");
     target.import(target.bowerDirectory + "/hljs-themes/themes/dist/hybrid.min.css");
     target.import(target.bowerDirectory + "/hljs-themes/themes/dist/line-numbers.min.css");

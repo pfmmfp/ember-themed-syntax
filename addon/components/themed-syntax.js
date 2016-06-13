@@ -5,8 +5,16 @@ import computed, { alias } from 'ember-computed-decorators';
 const { run } = Ember;
 const { schedule } = run;
 
-//Credit: @OverZealous
+// Credit: @OverZealous
 const highlight = window.codeHighlightLinenums;
+
+/**
+  A styled code highlighting component
+
+  @class ThemedSyntax
+  @extends Ember Component
+  @public
+*/
 
 export default Ember.Component.extend({
   layout,
@@ -18,11 +26,19 @@ export default Ember.Component.extend({
     Define CSS scope
 
     @property theme
-    @returns String
+    @type String
+    @default light
     @public
   */
   theme: 'light',
 
+  /**
+    Compute class name from theme option provided
+
+    @property _theme
+    @type String
+    @private
+  */
   @computed('theme')
   _theme(theme) {
     let defaults = {
@@ -34,16 +50,21 @@ export default Ember.Component.extend({
   },
 
   /**
+    Signal if the container should be transparent (background color set to none)
 
+    @property transparent
+    @type Bool
+    @default false
+    @public
   */
   transparent: false,
-
 
   /**
     Syntax language
 
     @property lang
-    @returns String
+    @type String
+    @default html
     @public
   */
   lang: 'html',
@@ -52,7 +73,7 @@ export default Ember.Component.extend({
    Signal if line numbers should be excluded
 
    @property withLineNumbers
-   @returns Boolean
+   @type Boolean
    @default true
    @public
   */
@@ -62,7 +83,8 @@ export default Ember.Component.extend({
     Common alias for language
 
     @property language
-    @returns String
+    @type String
+    @private
   */
   @alias('lang') language,
 
@@ -76,23 +98,25 @@ export default Ember.Component.extend({
     let lang = this.get('lang');
 
     schedule('afterRender', () => {
-      //Get raw txt
+      // Get raw txt
       let raw = `\n${this.$().find('.code').text().trim()}\n`;
       let numbers = this.get('withLineNumbers');
 
-      //Syntax instance
+      // Syntax instance
       let syntax = highlight(raw, {
-          hljs: hljs,
-          lang: lang,
-          start: Number(numbers),
+        hljs,
+        lang,
+        start: Number(numbers)
       });
 
-      //output formatted
+      // Output formatted
       this.set('code', syntax);
     });
 
   },
-  didInitAttrs() {
+  init() {
+    // Update from didinitattrs http://emberjs.com/deprecations/v2.x/#toc_ember-component-didinitattrs
+    this._super(...arguments);
     this._highlight();
   }
 });
