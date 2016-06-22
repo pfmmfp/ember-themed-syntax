@@ -10,14 +10,15 @@ An out-of-the-box solution for syntax highlighting with a couple of themes inclu
 
 The following params are accepted
 
-  - `lang`: required, default is **html**
-  - `theme`: optional, default is **light**
-  - `transparent`: optional, default is **false**
+  - `lang`: *default **html*** - The coding language inside the block
+  - `theme`: *default **light*** - Your theme selection
+  - `transparent`: *default **false*** - When set to true, a background color will not be applied
+  - `withBuffers`: *default **true*** - Adds a line break to beginning and end of each block
 
 
-    
-Template 
-    
+
+Template
+
     {{#themed-syntax lang="htmlbars" theme="dark"}}
       {{!Some code}}
     {{/themed-syntax}}
@@ -27,8 +28,8 @@ The default theme is set to light
 	{{#themed-syntax lang="htmlbars"}}
   	  {{!Some code}}
 	{{/themed-syntax}}
-	
-	
-	
+
+
+
 ##Demo & Documentation
 <http://demos.evolutionaryapps.com/EmberThemedSyntax>

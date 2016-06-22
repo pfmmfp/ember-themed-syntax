@@ -7,6 +7,6 @@
     "ember-qunit-notifications": "0.1.0",
     "highlightjs": "^9.4.0",
     "code-highlight-linenums": "^0.2.0",
-    "hljs-themes": "*"
+    "hljs-themes": "^0.0.7"
   }
 }

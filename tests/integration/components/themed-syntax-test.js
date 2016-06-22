@@ -25,16 +25,26 @@ test('it renders', function(assert) {
 
 test('it applies the "dark" parameter', function(assert) {
   this.render(hbs`{{themed-syntax theme="dark"}}`);
-  assert.ok($(this.$().find('.hljs')[0]).hasClass('hybrid'), 'The default dark theme was applied');
+  assert.ok($(this.$().find('.themed-syntax')[0]).hasClass('hybrid'), 'The default dark theme was applied');
   assert.ok($(this.$().find('.code')[0]).hasClass('dark'), 'The default dark theme was applied to line numbers');
 });
 
 test('it applies the "light" parameter', function(assert) {
   this.render(hbs`{{themed-syntax}}`);
-  assert.ok($(this.$().find('.hljs')[0]).hasClass('github-gist'), 'The default light theme was applied');
+  assert.ok($(this.$().find('.themed-syntax')[0]).hasClass('github-gist'), 'The default light theme was applied');
 });
 
 test('it applies the "transparent" parameter', function(assert) {
   this.render(hbs`{{themed-syntax transparent="true"}}`);
-  assert.ok($(this.$().find('.hljs')[0]).hasClass('transparent'), 'The transparent class was added');
+  assert.ok($(this.$().find('.themed-syntax')[0]).hasClass('transparent'), 'The transparent class was added');
+});
+
+test('it applies the "withBuffers" parameter', function(assert) {
+  this.render(hbs`
+    {{#themed-syntax withBuffers=false lang="htmlbars"}}
+      foo
+      bar
+    {{/themed-syntax}}
+  `);
+  assert.ok(`${$(this.$().find('.line').first()).text()}${$(this.$().find('.line').last()).text()}` !== '', 'The buffers were left off');
 });

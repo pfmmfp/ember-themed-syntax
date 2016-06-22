@@ -1,8 +1,12 @@
 import Ember from 'ember';
 import layout from '../templates/components/themed-syntax';
-import computed, { alias } from 'ember-computed-decorators';
+import computed, { alias, equal } from 'ember-computed-decorators';
 
-const { run } = Ember;
+const {
+  run,
+  get,
+  set
+} = Ember;
 const { schedule } = run;
 
 // Credit: @OverZealous
@@ -19,7 +23,7 @@ const highlight = window.codeHighlightLinenums;
 export default Ember.Component.extend({
   layout,
   tagName: 'pre',
-  classNames: ['hljs'],
+  classNames: ['themed-syntax'],
   classNameBindings: ['_theme', 'transparent:transparent'],
 
   /**
@@ -45,9 +49,18 @@ export default Ember.Component.extend({
       dark: 'hybrid',
       light: 'github-gist'
     };
-    this.set('dark', theme === 'dark');
     return defaults.hasOwnProperty(theme) ? defaults[theme] : theme;
   },
+
+  /**
+    Signal if theme is set to dark,
+    bound to dark class (so that line numbers will be styled accordingly)
+
+    @property dark
+    @type Boolean
+    @private
+  */
+  @equal('theme', 'dark') isDark,
 
   /**
     Signal if the container should be transparent (background color set to none)
@@ -80,6 +93,16 @@ export default Ember.Component.extend({
   withLineNumbers: true,
 
   /**
+    Adds a line break to beginning and end of each block
+
+    @property withBuffers
+    @type Boolean
+    @default true
+    @public
+  */
+  withBuffers: true,
+
+  /**
     Common alias for language
 
     @property language
@@ -95,12 +118,13 @@ export default Ember.Component.extend({
     @private
   */
   _highlight() {
-    let lang = this.get('lang');
+    let lang = get(this, 'lang');
 
     schedule('afterRender', () => {
       // Get raw txt
-      let raw = `\n${this.$().find('.code').text().trim()}\n`;
-      let numbers = this.get('withLineNumbers');
+      let raw = `${this.$().find('.code').text().trim()}`;
+      raw = get(this, 'withBuffers') ? `\n${raw}\n` : raw;
+      let numbers = get(this, 'withLineNumbers');
 
       // Syntax instance
       let syntax = highlight(raw, {
@@ -110,7 +134,7 @@ export default Ember.Component.extend({
       });
 
       // Output formatted
-      this.set('code', syntax);
+      set(this, 'code', syntax);
     });
 
   },

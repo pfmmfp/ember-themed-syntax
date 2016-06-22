@@ -50,12 +50,13 @@ code {
 }
 
 .fork-it {
+  border-radius: 0.5rem;
   position: fixed;
   top: 0.5em;
   right: 3em;
   padding: 0.5em;
   color: $blue;
-  outline: 1px solid $blue-light;
+  border: 1px solid $blue-light;
   background: rgba(255, 255, 255, 0.8);
 
   a {

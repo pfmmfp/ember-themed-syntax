@@ -1,5 +1,7 @@
 <header class="fork-it">
-  <a href="https://github.com/crodriguez1a/ember-themed-syntax" target="_blank">Github</a>
+  <strong>
+    <a href="https://github.com/crodriguez1a/ember-themed-syntax" target="_blank">GitHub</a>
+  </strong>
 </header>
 
 <h2 class="title" id="title">ember-themed-syntax</h2>
@@ -17,9 +19,10 @@
   The following params are accepted
 </p>
 <p>
-  <code>lang</code>: <small>required, default is <strong>html</strong></small><br>
-  <code>theme</code>: <small>optional, default is <strong>light</strong></small><br>
-  <code>transparent</code>: <small>optional, default is <strong>false</strong></small><br>
+  <code>lang</code>: <small><em> default <strong>html</strong> </em>- The coding language inside the block <a href="#languages">*</a></small><br>
+  <code>theme</code>: <small><em> default <strong>light</strong> </em>- Select a theme (currently only light and dark are available)</small><br>
+  <code>transparent</code>: <small><em> default <strong>false</strong> </em>- When set to true, a background color is not applied</small><br>
+  <code>withBuffers</code>: <small><em> default <strong>true</strong> </em>- Adds a line break to beginning and end of each block</small><br>
 </p>
 
 {{#themed-syntax lang="htmlbars" theme="dark"}}
@@ -58,8 +61,8 @@ import computed, { alias } from 'ember-computed-decorators';
 import computed, { alias } from 'ember-computed-decorators';
 {{/themed-syntax}}
 
-{{#themed-syntax lang="htmlbars" theme="dark" transparent="true"}}
-&#123;&#123;#themed-syntax lang="javscript" theme="dark" transparent="true"&#125;&#125;
+{{#themed-syntax lang="htmlbars" theme="dark" transparent="true" withBuffers=false}}
+&#123;&#123;#themed-syntax lang="javscript" theme="dark" transparent="true" withBuffers=false&#125;&#125;
   import computed, { alias } from 'ember-computed-decorators';
 &#123;&#123;/themed-syntax&#125;&#125;
 {{/themed-syntax}}
@@ -102,7 +105,7 @@ print('Hello, world!')
 let delay:NSTimeInterval = NSTimeInterval(0.25);
 {{/themed-syntax}}
 
-<p><a href="https://github.com/isagalaev/highlight.js/tree/master/src/languages" target="_blank">Comprehensive list of languages supported</a></p>
+<p><a name="languages" href="https://github.com/isagalaev/highlight.js/tree/master/src/languages" target="_blank">Comprehensive list of languages supported</a></p>
 
 <hr>
 <h3>Resources</h3>
