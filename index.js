@@ -1,8 +1,9 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
 module.exports = {
   name: 'ember-themed-syntax',
+
    init: function(app) {
     this._super.init && this._super.init.apply(this, arguments);
 
@@ -14,6 +15,7 @@ module.exports = {
       this.options.babel.optional.push('es7.decorators');
     }
   },
+
   included: function(app, parentAddon) {
      // see: https://github.com/ember-cli/ember-cli/issues/3718
     if (typeof app.import !== 'function' && app.app) {
