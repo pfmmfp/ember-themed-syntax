@@ -1,7 +1,5 @@
-<code class="code {{if isDark 'dark'}} hljs">
-  {{#unless code}}
-    {{yield}}
-  {{else}}
-  {{{code}}}
-  {{/unless}}
-</code>
+{{!
+  NOTE: Don't update this layout/spacing/tabbing
+  This format allows for the best looking whitespace in codeblocks
+}}
+<code class="code {{if isDark 'dark'}} hljs">{{#unless code}}{{yield}}{{else}}  {{{code}}}{{/unless}}</code>
