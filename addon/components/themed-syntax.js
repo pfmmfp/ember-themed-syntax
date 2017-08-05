@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import layout from '../templates/components/themed-syntax';
+import trimRight from 'ember-themed-syntax/-private/trim-right';
 import { computed } from 'ember-decorators/object';
 import { equal } from 'ember-decorators/object/computed';
 
 const {
   Component,
-  run: { scheduleOnce },
   get,
   set
 } = Ember;
@@ -105,39 +105,39 @@ export default Component.extend({
   withBuffers: true,
 
   /**
-    Convert raw block to highlighted block
+    Convert raw block to highlighted block using HighlightJS
 
     @method _highlight
     @private
   */
   _highlight() {
-    scheduleOnce('afterRender', this, '_createFormattedHtml');
-  },
+    // Get syntax language
+    let lang = get(this, 'lang');
 
-  /**
-    Setup proper HTML structure using HighlightJS for syntax highlighting
+    // Get the trimmed/buffered raw text
+    let raw = `${this.$().find('.code').text()}`;
+    raw = trimRight(raw);
+    if (get(this, 'withBuffers')) {
+      raw = `\n${raw}\n`;
+    }
 
-    @method _createFormattedHtml
-    @private
-  */
-  _createFormattedHtml() {
-    let raw = `${this.$().find('.code').text().trim()}`; // Get raw txt
-    raw = get(this, 'withBuffers') ? `\n${raw}\n` : raw;
-    let numbers = get(this, 'withLineNumbers');
+    // Two valid line number states
+    //    0: do not show line numbers
+    //    1: show line numbers starting at Line 1
+    let start = get(this, 'withLineNumbers') | 0;
 
     // Syntax instance
     let syntax = highlight(raw, {
       hljs,
-      lang: get(this, 'lang'),
-      start: Number(numbers)
+      lang,
+      start
     });
 
     // Output formatted
     set(this, 'code', syntax);
   },
 
-  init() {
-    // Update from didinitattrs http://emberjs.com/deprecations/v2.x/#toc_ember-component-didinitattrs
+  didInsertElement() {
     this._super(...arguments);
 
     this._highlight();
