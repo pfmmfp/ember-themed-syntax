@@ -17,6 +17,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
+    "start:inspect": "node --inspect --debug-brk node_modules/.bin/ember server",
     "test": "ember try:each"
   },
   "dependencies": {
