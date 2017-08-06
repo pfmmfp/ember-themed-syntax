@@ -6,6 +6,10 @@ An out-of-the-box solution for syntax highlighting with a couple of themes inclu
 
 * `ember install ember-themed-syntax`
 
+## Demo and Documentation
+
+http://demos.evolutionaryapps.com/EmberThemedSyntax
+
 ## Usage
 
 The following params are accepted
@@ -15,21 +19,14 @@ The following params are accepted
   - `transparent`: *default **false*** - When set to true, a background color will not be applied
   - `withBuffers`: *default **true*** - Adds a line break to beginning and end of each block
 
-
-
 Template
 
     {{#themed-syntax lang="htmlbars" theme="dark"}}
-      {{!Some code}}
+      {{! Some code }}
     {{/themed-syntax}}
-
+    
 The default theme is set to light
 
 	{{#themed-syntax lang="htmlbars"}}
-  	  {{!Some code}}
+  	  {{! Some code }}
 	{{/themed-syntax}}
-
-
-
-##Demo & Documentation
-<http://demos.evolutionaryapps.com/EmberThemedSyntax>

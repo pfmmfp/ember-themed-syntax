@@ -1,14 +1,14 @@
-/*jshint node:true*/
+/* eslint-env node */
 module.exports = {
   description: 'Install bower dependencies',
 
-	normalizeEntityName: function() {
+	normalizeEntityName() {
 		// this prevents an error when the entityName is
 		// not specified (since that doesn't actually matter
 		// to us
 	},
 
-	afterInstall: function() {
+	afterInstall() {
     return this.addBowerPackagesToProject([
       { name: 'highlightjs', target: '^9.4.0' },
       { name: 'code-highlight-linenums', target: '^0.2.0' },

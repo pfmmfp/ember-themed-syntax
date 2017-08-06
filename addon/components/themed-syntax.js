@@ -1,15 +1,16 @@
 import Ember from 'ember';
 import layout from '../templates/components/themed-syntax';
-import computed, { alias, equal } from 'ember-computed-decorators';
+import trimRight from 'ember-themed-syntax/-private/trim-right';
+import { computed } from 'ember-decorators/object';
+import { equal } from 'ember-decorators/object/computed';
 
 const {
-  run,
+  Component,
   get,
   set
 } = Ember;
-const { schedule } = run;
 
-// Credit: @OverZealous
+// Credit: @OverZealous - https://github.com/OverZealous/code-highlight-linenums
 const highlight = window.codeHighlightLinenums;
 
 /**
@@ -19,9 +20,9 @@ const highlight = window.codeHighlightLinenums;
   @extends Ember Component
   @public
 */
-
-export default Ember.Component.extend({
+export default Component.extend({
   layout,
+
   tagName: 'pre',
   classNames: ['themed-syntax'],
   classNameBindings: ['_theme', 'transparent:transparent'],
@@ -58,9 +59,10 @@ export default Ember.Component.extend({
 
     @property dark
     @type Boolean
+    @default false
     @private
   */
-  @equal('theme', 'dark') isDark,
+  @equal('theme', 'dark') isDark: false,
 
   /**
     Signal if the container should be transparent (background color set to none)
@@ -103,44 +105,41 @@ export default Ember.Component.extend({
   withBuffers: true,
 
   /**
-    Common alias for language
-
-    @property language
-    @type String
-    @private
-  */
-  @alias('lang') language,
-
-  /**
-    Convert raw block to highlighted block
+    Convert raw block to highlighted block using HighlightJS
 
     @method _highlight
     @private
   */
   _highlight() {
+    // Get syntax language
     let lang = get(this, 'lang');
 
-    schedule('afterRender', () => {
-      // Get raw txt
-      let raw = `${this.$().find('.code').text().trim()}`;
-      raw = get(this, 'withBuffers') ? `\n${raw}\n` : raw;
-      let numbers = get(this, 'withLineNumbers');
+    // Get the trimmed/buffered raw text
+    let raw = `${this.$().find('.code').text()}`;
+    raw = trimRight(raw);
+    if (get(this, 'withBuffers')) {
+      raw = `\n${raw}\n`;
+    }
 
-      // Syntax instance
-      let syntax = highlight(raw, {
-        hljs,
-        lang,
-        start: Number(numbers)
-      });
+    // Two valid line number states
+    //    0: do not show line numbers
+    //    1: show line numbers starting at Line 1
+    let start = get(this, 'withLineNumbers') | 0;
 
-      // Output formatted
-      set(this, 'code', syntax);
+    // Syntax instance
+    let syntax = highlight(raw, {
+      hljs,
+      lang,
+      start
     });
 
+    // Output formatted
+    set(this, 'code', syntax);
   },
-  init() {
-    // Update from didinitattrs http://emberjs.com/deprecations/v2.x/#toc_ember-component-didinitattrs
+
+  didInsertElement() {
     this._super(...arguments);
+
     this._highlight();
   }
 });
