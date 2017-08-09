@@ -4,7 +4,13 @@ An out-of-the-box solution for syntax highlighting with a couple of themes inclu
 
 ## Installation
 
-* `ember install ember-themed-syntax`
+```bash
+ember install ember-themed-syntax
+```
+
+## Languages
+
+List of [supported highlight.js languages](https://github.com/isagalaev/highlight.js/tree/9.10.0/src/languages)
 
 ## Demo and Documentation
 
@@ -21,12 +27,16 @@ The following params are accepted
 
 Template
 
-    {{#themed-syntax lang="htmlbars" theme="dark"}}
-      {{! Some code }}
-    {{/themed-syntax}}
-    
+```handlebars
+  {{#themed-syntax lang="htmlbars" theme="dark"}}
+    {{! Some code }}
+  {{/themed-syntax}}
+```
+
 The default theme is set to light
 
+```handlebars
 	{{#themed-syntax lang="htmlbars"}}
   	  {{! Some code }}
 	{{/themed-syntax}}
+```
