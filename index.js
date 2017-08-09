@@ -47,6 +47,10 @@ module.exports = {
 
     let target = parentAddon || app;
 
+    // Vendor shims
+    target.import('vendor/shims/code-highlight-linenums.js');
+    target.import('vendor/shims/highlight.js');
+
     // TODO: make each theme optional
     // var options = target.options.emberThemedSyntax || {};
   }
