@@ -4,7 +4,24 @@
 module.exports = {
   name: 'ember-themed-syntax',
 
-  init(app) {
+  options: {
+    nodeAssets: {
+      'highlightjs': {
+        srcDir: '',
+        import: ['highlight.pack.min.js']
+      },
+      'code-highlight-linenums': {
+        srcDir: '',
+        import: ['code-highlight-linenums.js']
+      },
+      'hljs-themes': {
+        srcDir: 'themes/dist',
+        import: ['github-gist.min.css', 'hybrid.min.css', 'line-numbers.min.css']
+      }
+    }
+  },
+
+  init(/* app */) {
     this._super.init && this._super.init.apply(this, arguments);
 
     this.options = this.options || {};
@@ -32,12 +49,5 @@ module.exports = {
 
     // TODO: make each theme optional
     // var options = target.options.emberThemedSyntax || {};
-
-    target.import(target.bowerDirectory + "/highlightjs/highlight.pack.min.js");
-    target.import(target.bowerDirectory + "/code-highlight-linenums/code-highlight-linenums.js");
-    // Just borrow some default styles
-    target.import(target.bowerDirectory + "/hljs-themes/themes/dist/github-gist.min.css");
-    target.import(target.bowerDirectory + "/hljs-themes/themes/dist/hybrid.min.css");
-    target.import(target.bowerDirectory + "/hljs-themes/themes/dist/line-numbers.min.css");
   }
 };

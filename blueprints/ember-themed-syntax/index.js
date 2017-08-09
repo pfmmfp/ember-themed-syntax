@@ -1,6 +1,6 @@
 /* eslint-env node */
 module.exports = {
-  description: 'Install bower dependencies',
+  description: 'Install NPM dependencies',
 
 	normalizeEntityName() {
 		// this prevents an error when the entityName is
@@ -9,10 +9,10 @@ module.exports = {
 	},
 
 	afterInstall() {
-    return this.addBowerPackagesToProject([
-      { name: 'highlightjs', target: '^9.4.0' },
-      { name: 'code-highlight-linenums', target: '^0.2.0' },
-      { name: 'hljs-themes', target: '^0.0.7' }
+    return this.addPackagesToProject([
+      { name: 'highlightjs', target: '^9.10.0' },
+      { name: 'code-highlight-linenums', target: '^0.2.1' },
+      { name: 'hljs-themes', target: '^1.0.0' }
     ]);
 	}
 };
