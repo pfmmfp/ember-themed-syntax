@@ -1,3 +1,7 @@
+[![npm version](https://badge.fury.io/js/ember-themed-syntax.svg)](https://badge.fury.io/js/ember-themed-syntax)
+[![Build Status](https://travis-ci.org/crodriguez1a/ember-themed-syntax.svg?branch=master)](https://travis-ci.org/crodriguez1a/ember-themed-syntax)
+[![Ember Observer Score](http://emberobserver.com/badges/ember-themed-syntax.svg)](https://emberobserver.com/addons/ember-themed-syntax)
+
 # ember-themed-syntax
 
 An out-of-the-box solution for syntax highlighting with a couple of themes included
