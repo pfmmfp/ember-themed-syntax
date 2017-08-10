@@ -3,15 +3,14 @@ import layout from '../templates/components/themed-syntax';
 import trimRight from 'ember-themed-syntax/-private/trim-right';
 import { computed } from 'ember-decorators/object';
 import { equal } from 'ember-decorators/object/computed';
+import codeHighlightLinenums from 'code-highlight-linenums';
+import hljs from 'highlight';
 
 const {
   Component,
   get,
   set
 } = Ember;
-
-// Credit: @OverZealous - https://github.com/OverZealous/code-highlight-linenums
-const highlight = window.codeHighlightLinenums;
 
 /**
   A styled code highlighting component
@@ -127,7 +126,8 @@ export default Component.extend({
     let start = get(this, 'withLineNumbers') | 0;
 
     // Syntax instance
-    let syntax = highlight(raw, {
+    // Credit: @OverZealous - https://github.com/OverZealous/code-highlight-linenums
+    let syntax = codeHighlightLinenums(raw, {
       hljs,
       lang,
       start
