@@ -18,7 +18,7 @@ List of [supported highlight.js languages](https://github.com/isagalaev/highligh
 
 ## Demo and Documentation
 
-http://demos.evolutionaryapps.com/EmberThemedSyntax
+http://crodriguez1a.github.io/ember-themed-syntax/
 
 ## Usage
 
