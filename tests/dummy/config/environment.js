@@ -44,7 +44,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.baseURL = '/EmberThemedSyntax';
+    ENV.baseURL = '/ember-themed-syntax';
     ENV.locationType = 'hash';
   }
 
