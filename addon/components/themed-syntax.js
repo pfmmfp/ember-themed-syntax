@@ -27,6 +27,16 @@ export default Component.extend({
   classNameBindings: ['_theme', 'transparent:transparent'],
 
   /**
+    Binding code input
+
+    @property code
+    @type String
+    @default
+    @public
+  */
+  code: '',
+
+  /**
     Define CSS scope
 
     @property theme
@@ -62,6 +72,18 @@ export default Component.extend({
     @private
   */
   @equal('theme', 'dark') isDark: false,
+
+  /**
+   Compute highlighted code
+
+   @property code
+   @type String
+   @private
+   */
+  @computed('code')
+  highlightedCode(code) {
+    return this._highlight(code);
+  },
 
   /**
     Signal if the container should be transparent (background color set to none)
@@ -109,13 +131,12 @@ export default Component.extend({
     @method _highlight
     @private
   */
-  _highlight() {
+  _highlight(code) {
     // Get syntax language
     let lang = get(this, 'lang');
 
     // Get the trimmed/buffered raw text
-    let raw = `${this.$().find('.code').text()}`;
-    raw = trimRight(raw);
+    let raw = trimRight(code);
     if (get(this, 'withBuffers')) {
       raw = `\n${raw}\n`;
     }
@@ -132,14 +153,14 @@ export default Component.extend({
       lang,
       start
     });
-
-    // Output formatted
-    set(this, 'code', syntax);
+    return syntax;
   },
 
   didInsertElement() {
     this._super(...arguments);
 
-    this._highlight();
+    if (!get(this, 'code')) {
+      set(this, 'code', this.$().find('.code').text());
+    }
   }
 });
