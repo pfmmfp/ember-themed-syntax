@@ -49,3 +49,12 @@ test('it applies the "withBuffers" parameter', function(assert) {
   `);
   assert.ok(`${Ember.$(this.$().find('.line').first()).text()}${Ember.$(this.$().find('.line').last()).text()}` !== '', 'The buffers were left off');
 });
+
+test('it binds code', function(assert) {
+  this.set('code', 'first round');
+  this.render(hbs`{{themed-syntax code=code}}`);
+  assert.equal(this.$('pre').text().trim(), 'first round', 'initial render ok');
+
+  this.set('code', 'second round');
+  assert.equal(this.$('pre').text().trim(), 'second round', 'code is bound');
+});
