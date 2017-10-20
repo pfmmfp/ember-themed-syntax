@@ -28,6 +28,7 @@ The following params are accepted
   - `theme`: *default **light*** - Your theme selection
   - `transparent`: *default **false*** - When set to true, a background color will not be applied
   - `withBuffers`: *default **true*** - Adds a line break to beginning and end of each block
+  - `code`: *default **''*** - Use instead of template block parameter to bind code input
 
 Template
 

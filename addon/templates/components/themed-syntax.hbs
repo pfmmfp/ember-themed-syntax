@@ -2,4 +2,4 @@
   NOTE: Don't update this layout/spacing/tabbing
   This format allows for the best looking whitespace in codeblocks
 }}
-<code class="code hljs {{if isDark 'dark'}}">{{#unless code}}{{yield}}{{else}}  {{{highlightedCode}}}{{/unless}}</code>
+<code class="code hljs {{if isDark 'dark'}}">{{#unless code}}{{yield}}{{else}}  {{html-safe highlightedCode}}{{/unless}}</code>

@@ -23,6 +23,7 @@
   <code>theme</code>: <small><em> default <strong>light</strong> </em>- Select a theme (currently only light and dark are available)</small><br>
   <code>transparent</code>: <small><em> default <strong>false</strong> </em>- When set to true, a background color is not applied</small><br>
   <code>withBuffers</code>: <small><em> default <strong>true</strong> </em>- Adds a line break to beginning and end of each block</small><br>
+  <code>code</code>: <small><em> default <strong>''</strong> </em>- Use instead of template block parameter to bind code input</small><br>
 </p>
 
 {{#themed-syntax lang="htmlbars" theme="dark"}}
@@ -49,7 +50,7 @@ import { alias } from 'ember-decorators/object/computed';
 {{/themed-syntax}}
 
 {{#themed-syntax lang="htmlbars" transparent="true"}}
-&#123;&#123;#themed-syntax lang="javscript" transparent="true"&#125;&#125;
+&#123;&#123;#themed-syntax lang="javascript" transparent="true"&#125;&#125;
   import { computed } from 'ember-decorators/object';
   import { alias } from 'ember-decorators/object/computed';
 &#123;&#123;/themed-syntax&#125;&#125;
@@ -65,10 +66,27 @@ import { alias } from 'ember-decorators/object/computed';
 {{/themed-syntax}}
 
 {{#themed-syntax lang="htmlbars" theme="dark" transparent="true" withBuffers=false}}
-&#123;&#123;#themed-syntax lang="javscript" theme="dark" transparent="true" withBuffers=false&#125;&#125;
+&#123;&#123;#themed-syntax lang="javascript" theme="dark" transparent="true" withBuffers=false&#125;&#125;
   import { computed } from 'ember-decorators/object';
   import { alias } from 'ember-decorators/object/computed';
 &#123;&#123;/themed-syntax&#125;&#125;
+{{/themed-syntax}}
+</p>
+
+<p class="transparent-sample">
+  <p>With code input bound so that highlighting updates</p>
+{{themed-syntax lang="javascript" code=sampleCode}}
+
+{{#themed-syntax lang="javascript"}}
+//component.js
+sampleCode: `import { computed } from 'ember-decorators/object';
+  import { alias } from 'ember-decorators/object/computed';`
+{{/themed-syntax}}
+
+
+{{#themed-syntax lang="htmlbars"}}
+&#123;&#123;!-- template --&#125;&#125;
+&#123;&#123;themed-syntax lang="javascript" code=sampleCode&#125;&#125;
 {{/themed-syntax}}
 </p>
 
